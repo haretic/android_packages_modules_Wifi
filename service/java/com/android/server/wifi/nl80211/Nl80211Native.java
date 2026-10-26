@@ -2010,7 +2010,8 @@ public class Nl80211Native {
             if (!mIsInitialized) return new int[0];
 
             if (mBandToWiphyIndex.indexOfKey(band) < 0) {
-                Log.e(TAG, "getChannelsMhzForBand: Wiphy index not recorded for band " + band);
+                // No radio has the band, as a phone without 6 or 60 GHz: none of its channels
+                Log.d(TAG, "getChannelsMhzForBand: no wiphy has band " + band);
                 return new int[0];
             }
             int wiphyIndex = mBandToWiphyIndex.get(band);
