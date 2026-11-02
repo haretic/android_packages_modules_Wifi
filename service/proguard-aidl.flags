@@ -1,0 +1,7 @@
+# service-wifi's R8 classpath holds framework-wifi twice, before and after jarjar, and which
+# copy of an AIDL interface R8 resolves varies from run to run. Taking the pre-jarjar one, the
+# binder methods whose signatures name a jarjared type (ParceledListSlice) look like they
+# override nothing and are shrunk away, and system_server dies on the first call to one.
+-keepclassmembers class * implements android.os.IInterface {
+    public <methods>;
+}
