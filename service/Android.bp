@@ -144,6 +144,10 @@ java_library {
     installable: true,
     static_libs: ["wifi-service-pre-jarjar"],
 
+    optimize: {
+        proguard_flags_files: ["proguard-aidl.flags"],
+    },
+
     dex_preopt: {
         // The profile is updated monthly with the bootclasspath/system_server
         // profiles based on the data from Dogfooders, and before mainline
